@@ -2,19 +2,19 @@
 
 -- LSP buf comands automate:
 
-local function Code_actions()
+function Code_actions()
 	vim.lsp.buf.code_action()
 end
 
-local function Definition()
+function Definition()
 	vim.lsp.buf.definition()
 end
 
-local function Format()
+function Format()
 	vim.lsp.buf.format()
 end
 
-local function Hover()
+function Hover()
 	vim.lsp.buf.hover()
 end
 
