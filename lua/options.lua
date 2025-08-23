@@ -37,5 +37,5 @@ vim.opt.termguicolors = false
 -- Leader Key
 vim.g.mapleader = " "
 
---
+-- enable errors and warnings visible in file (virtual text).
 vim.diagnostic.config({ virtual_text = true })

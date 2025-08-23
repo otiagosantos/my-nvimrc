@@ -67,6 +67,9 @@ require("lazy").setup({
                 {"mason-org/mason.nvim", opts = {} },
                 "neovim/nvim-lspconfig",
             },
+            --automatic_enable = { "lua-language-server", "clangd", "java-language-server" },
+            automatic_enable = true,
+
         },
     },
     -- Configure any other settings here. See the documentation for more details.
