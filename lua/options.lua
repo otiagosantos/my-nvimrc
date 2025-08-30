@@ -1,3 +1,4 @@
+--- \@diagnostic disable: undefined-global
 -- [Line Numbers]
 vim.opt.number = true
 vim.opt.nuw = 1
@@ -35,7 +36,20 @@ vim.opt.ignorecase = false
 vim.opt.termguicolors = false
 
 -- Leader Key
+--- \@diagnostic disable-next-line: undefined-global
 vim.g.mapleader = " "
 
 -- enable errors and warnings visible in file (virtual text).
-vim.diagnostic.config({ virtual_text = true })
+vim.diagnostic.config({ 
+    virtual_text = false,  -- show inline messages
+    signs = true,         -- show signs in the gutter
+    underline = true,     -- underline problematic text
+    update_in_insert = false, -- don't update diagnostics while typing
+    severity = { min = vim.diagnostic.severity.WARN },
+    severity_sort = true,     -- sort diagnostics by severity
+})
+
+-- My custom functions
+function openfloat()
+    vim.diagnostic.open_float()
+end

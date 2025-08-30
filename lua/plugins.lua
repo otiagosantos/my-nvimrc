@@ -1,4 +1,5 @@
 -- :: [LazyVim Single File SETUP] ::
+--- \@diagnostic disable: undefined-global
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -23,7 +24,7 @@ require("lazy").setup({
         -- add your plugins here
         {
             "rebelot/kanagawa.nvim",
-            config = function() 
+            config = function()
                 vim.cmd.colorscheme("kanagawa-dragon")
             end
         },
@@ -45,7 +46,7 @@ require("lazy").setup({
                     incremental_selection = {
                         enable = true,
                         keymaps = {
-                            init_selection = "<Leader>ss", 
+                            init_selection = "<Leader>ss",
                             node_incremental = "<Leader>si",
                             scope_incremental = "<Leader>sc",
                             node_decremental = "<Leader>sd",
@@ -53,7 +54,7 @@ require("lazy").setup({
                     }
                 })
             end
-        }, 
+        },
         {
             "neovim/nvim-lspconfig",
         },
@@ -62,7 +63,7 @@ require("lazy").setup({
         },
         {
             "mason-org/mason-lspconfig.nvim",
-            opts = {},
+            opts = {}, 
             dependencies = {
                 {"mason-org/mason.nvim", opts = {} },
                 "neovim/nvim-lspconfig",
@@ -78,12 +79,6 @@ require("lazy").setup({
     -- automatically check for plugin updates
     checker = { enabled = true },
 })
-
-local function test()
-    print("hfdsa")
-end
-
-test()
 
 -- .....................................................
 
