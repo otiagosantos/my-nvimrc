@@ -13,6 +13,18 @@ end
 local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
+-- default colorscheme config
+local function colorconf()
+	return {
+		transparent = false,
+		styles = {
+			sidebars = "transparent",
+			floats = "transparent",
+			comments = { italic = false }, -- Disable italics in comments
+		},
+	}
+end
+
 -- [[ Configure and install plugins ]]
 --
 --  To check the current status of your plugins, run
@@ -529,7 +541,7 @@ require("lazy").setup({
 
 	{ -- Autoformat
 		"stevearc/conform.nvim",
-		--event = { "BufWritePre" }, -- @otiagosantos.code  NOTE: Toggle comment this event to on/off format_on_save.
+		-- event = { "BufWritePre" }, -- @otiagosantos.code  NOTE: Toggle comment this event to on/off format_on_save.
 		cmd = { "ConformInfo" },
 		keys = {
 			{
@@ -676,19 +688,27 @@ require("lazy").setup({
 		priority = 1000, -- Make sure to load this before all the other start plugins.
 		config = function()
 			---@diagnostic disable-next-line: missing-fields
-			require("tokyonight").setup({
-				styles = {
-					comments = { italic = false }, -- Disable italics in comments
-				},
-			})
+			require("tokyonight").setup(
+				--              {
+				-- 	styles = {
+				-- 		comments = { italic = false }, -- Disable italics in comments
+				-- 	},
+				-- }
+				colorconf()
+			)
 
 			-- Load the colorscheme here.
 			-- Like many other themes, this one has different styles, and you could load
 			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-			vim.cmd.colorscheme("tokyonight-night")
+			-- vim.cmd.colorscheme("tokyonight-night")
 		end,
 	},
-
+	{
+		"rebelot/kanagawa.nvim",
+		config = function()
+			require("kanagawa").setup(colorconf())
+		end,
+	},
 	-- Highlight todo, notes, etc in comments
 	{
 		"folke/todo-comments.nvim",
@@ -785,7 +805,21 @@ require("lazy").setup({
 	-- require 'kickstart.plugins.indent_line',
 	-- require 'kickstart.plugins.lint',
 	-- require 'kickstart.plugins.autopairs',
-	-- require 'kickstart.plugins.neo-tree',
+	--require 'kickstart.plugins.neo-tree',
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+			"nvim-tree/nvim-web-devicons",
+		},
+		config = function()
+			require("neo-tree").setup({
+				close_if_last_window = true,
+			})
+		end,
+		lazy = false,
+	},
 	-- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
 	-- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`

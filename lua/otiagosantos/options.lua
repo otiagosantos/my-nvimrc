@@ -86,8 +86,15 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 -- vim.opt.softtabstop = 8
 
+-- Colorscheme and themes
+-- vim.cmd.colorscheme("tokyonight-night")
+vim.cmd.colorscheme("kanagawa")
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
+-- vim.keymap.set("n", "<leader>n", "", { group = "[N]eotree" })
+vim.keymap.set("n", "<leader>n", "", { desc = "[N]eotree cmds" })
+vim.keymap.set("n", "<leader>nt", "<Cmd>Neotree toggle<CR>", { desc = "[T]oggle Neotree filesystem" })
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
