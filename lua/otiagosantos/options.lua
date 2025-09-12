@@ -87,8 +87,8 @@ vim.opt.shiftwidth = 4
 -- vim.opt.softtabstop = 8
 
 -- Colorscheme and themes
--- vim.cmd.colorscheme("tokyonight-night")
-vim.cmd.colorscheme("kanagawa")
+vim.cmd.colorscheme("tokyonight-night")
+-- vim.cmd.colorscheme("kanagawa")
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`

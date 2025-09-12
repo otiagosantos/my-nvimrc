@@ -20,7 +20,8 @@ local function colorconf()
 		styles = {
 			sidebars = "transparent",
 			floats = "transparent",
-			comments = { italic = false }, -- Disable italics in comments
+			italic = false,
+			comments = { italic = true }, -- Disable italics in comments
 		},
 	}
 end
@@ -541,7 +542,7 @@ require("lazy").setup({
 
 	{ -- Autoformat
 		"stevearc/conform.nvim",
-		-- event = { "BufWritePre" }, -- @otiagosantos.code  NOTE: Toggle comment this event to on/off format_on_save.
+		event = { "BufWritePre" },
 		cmd = { "ConformInfo" },
 		keys = {
 			{
@@ -555,11 +556,17 @@ require("lazy").setup({
 		},
 		opts = {
 			notify_on_error = false,
-			format_on_save = function(bufnr)
+			format_on_save = function(bufnr) -- @otiagosantos.code  NOTE: Comment this function to on/off format_on_save.
 				-- Disable "format_on_save lsp_fallback" for languages that don't
 				-- have a well standardized coding style. You can add additional
 				-- languages here or re-enable it for the disabled ones.
-				local disable_filetypes = { c = true, cpp = true }
+				local disable_filetypes = {
+					c = true,
+					cpp = true,
+					lua = true,
+					php = true,
+					java = true,
+				}
 				if disable_filetypes[vim.bo[bufnr].filetype] then
 					return nil
 				else
@@ -688,14 +695,15 @@ require("lazy").setup({
 		priority = 1000, -- Make sure to load this before all the other start plugins.
 		config = function()
 			---@diagnostic disable-next-line: missing-fields
-			require("tokyonight").setup(
-				--              {
-				-- 	styles = {
-				-- 		comments = { italic = false }, -- Disable italics in comments
-				-- 	},
-				-- }
-				colorconf()
-			)
+			require("tokyonight").setup({
+				transparent = true,
+				styles = {
+					sidebars = "transparent",
+					floats = "transparent",
+					italic = false,
+					comments = { italic = true }, -- Disable italics in comments
+				},
+			})
 
 			-- Load the colorscheme here.
 			-- Like many other themes, this one has different styles, and you could load
