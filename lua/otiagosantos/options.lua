@@ -95,6 +95,7 @@ vim.cmd.colorscheme("tokyonight-night")
 -- vim.keymap.set("n", "<leader>n", "", { group = "[N]eotree" })
 vim.keymap.set("n", "<leader>n", "", { desc = "[N]eotree cmds" })
 vim.keymap.set("n", "<leader>nt", "<Cmd>Neotree toggle<CR>", { desc = "[T]oggle Neotree filesystem" })
+vim.keymap.set("n", "<leader>ne", "<Cmd>Neotree focus<CR>", { desc = "Focus on Neotree" })
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
