@@ -714,7 +714,9 @@ require("lazy").setup({
 	{
 		"rebelot/kanagawa.nvim",
 		config = function()
-			require("kanagawa").setup(colorconf())
+			require("kanagawa").setup({
+                transparent = true,
+            })
 		end,
 	},
 	-- Highlight todo, notes, etc in comments
